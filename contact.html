@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | DTI Learning Hub</title>
+
+    <meta name="description" content="Contact DTI Learning Hub for questions, suggestions, and feedback about Digital Number Systems learning materials.">
+
+    <style>
+        /* =====================================
+           RED, BLACK AND GOLD THEME
+        ===================================== */
+
+        :root {
+            --red: #c62828;
+            --red-dark: #8f1515;
+            --black: #171515;
+            --black-soft: #282222;
+            --gold: #f2c14e;
+            --gold-light: #ffe6a0;
+            --cream: #fffaf0;
+            --white: #ffffff;
+            --text: #302727;
+            --muted: #685c54;
+            --border: #ead9ad;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background:
+                radial-gradient(
+                    ellipse at top left,
+                    #f8e6e2 0%,
+                    transparent 45%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--cream),
+                    #f6eee5
+                );
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* =====================================
+           MAIN PAGE CONTAINER
+        ===================================== */
+
+        .contact-container {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+            padding: 45px 25px 20px;
+            flex: 1;
+            animation: fadeIn 0.8s ease both;
+        }
+
+        /* =====================================
+           PAGE HEADING
+        ===================================== */
+
+        .contact-heading {
+            max-width: 800px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .heading-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 15px;
+            color: var(--red-dark);
+            background: #f8e4df;
+            border: 1px solid #edc6bd;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-heading h1 {
+            color: var(--red-dark);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .heading-underline {
+            width: 90px;
+            height: 5px;
+            margin: 0 auto 22px;
+            border-radius: 10px;
+            background: linear-gradient(
+                90deg,
+                var(--red),
+                var(--gold)
+            );
+        }
+
+        .contact-heading p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin: 12px 0;
+        }
+
+        /* =====================================
+           CONTACT CARDS
+        ===================================== */
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+            margin-bottom: 38px;
+        }
+
+        .contact-card {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid #eadbbf;
+            border-top: 5px solid var(--red);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(23, 21, 21, 0.07);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: -45px;
+            right: -45px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(242, 193, 78, 0.18);
+            transition: transform 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            border-top-color: var(--gold);
+            box-shadow: 0 18px 35px rgba(143, 21, 21, 0.14);
+        }
+
+        .contact-card:hover::before {
+            transform: scale(1.7);
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 20px;
+            background: var(--black);
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            font-size: 38px;
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: rotate(-8deg) scale(1.08);
+            background: var(--red-dark);
+        }
+
+        .contact-card h2 {
+            color: var(--black);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            max-width: 100%;
+            color: var(--red-dark);
+            font-weight: bold;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 3px;
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .contact-card a:hover {
+            color: #a36c00;
+            border-bottom-color: var(--red);
+        }
+
+        /* =====================================
+           CONTACT MESSAGE SECTION
+        ===================================== */
+
+        .contact-note {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                130deg,
+                var(--black),
+                #352020 70%,
+                var(--red-dark)
+            );
+            color: var(--white);
+            padding: 40px 28px;
+            border: 1px solid rgba(242, 193, 78, 0.7);
+            border-radius: 22px;
+            text-align: center;
+            line-height: 1.9;
+            box-shadow: 0 12px 30px rgba(23, 21, 21, 0.16);
+        }
+
+        .contact-note::before {
+            content: "✦";
+            position: absolute;
+            top: 8px;
+            right: 25px;
+            color: var(--gold);
+            font-size: 42px;
+            opacity: 0.7;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .contact-note h2 {
+            color: var(--gold-light);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .contact-note p {
+            max-width: 760px;
+            margin: 10px auto;
+            color: #fff7e9;
+        }
+
+        .gold-divider {
+            width: 65px;
+            height: 3px;
+            margin: 18px auto;
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        /* =====================================
+           BACK TO HOME BUTTON
+        ===================================== */
+
+        .home-button-container {
+            text-align: center;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 30px;
+            padding: 13px 27px;
+            background: var(--red);
+            color: var(--white);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 0 var(--red-dark);
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .back-home:hover {
+            background: var(--black);
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #080707;
+        }
+
+        .back-home:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--red-dark);
+        }
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        .contact-footer {
+            position: relative;
+            margin-top: 45px;
+            padding: 25px 15px;
+            text-align: center;
+            color: #f9eee0;
+            background: var(--black);
+            border-top: 4px solid var(--gold);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .contact-footer p {
+            margin: 4px 0;
+        }
+
+        .contact-footer p:first-child {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: #e8dcd0;
+        }
+
+        /* =====================================
+           ANIMATIONS
+        ===================================== */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+                opacity: 0.65;
+            }
+
+            50% {
+                transform: rotate(15deg) scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        /* =====================================
+           KEYBOARD ACCESSIBILITY
+        ===================================== */
+
+        a:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 5px;
+        }
+
+        /* =====================================
+           RESPONSIVE DESIGN
+        ===================================== */
+
+        @media (max-width: 650px) {
+            .contact-container {
+                padding: 28px 18px 15px;
+            }
+
+            .contact-heading {
+                margin-bottom: 30px;
+            }
+
+            .contact-heading h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-heading p {
+                font-size: 1rem;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .contact-note {
+                padding: 32px 20px;
+            }
+
+            .contact-note::before {
+                top: 5px;
+                right: 12px;
+                font-size: 30px;
+            }
+
+            .back-home {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .contact-footer {
+                margin-top: 35px;
+            }
+        }
+
+        /* REDUCE MOTION WHEN PREFERRED */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="contact-container">
+
+        <!-- PAGE HEADING -->
+        <section class="contact-heading">
+            <span class="heading-label">
+                DTI Learning Hub
+            </span>
+
+            <h1>📩 Contact Us</h1>
+
+            <div class="heading-underline"></div>
+
+            <p>
+                Welcome to DTI Learning Hub! We are happy to connect
+                with students, teachers, and anyone interested in
+                learning about Digital Number Systems.
+            </p>
+
+            <p>
+                If you have questions, suggestions, or feedback
+                about our learning materials, please reach out to us.
+            </p>
+        </section>
+
+        <!-- CONTACT INFORMATION -->
+        <section class="contact-cards">
+
+            <!-- EMAIL CARD -->
+            <article class="contact-card">
+                <div class="contact-icon" aria-hidden="true">
+                    📧
+                </div>
+
+                <h2>Email Us</h2>
+
+                <p>
+                    For questions and learning support, email us at:
+                </p>
+
+                <a href="mailto:08230134.sce@rub.edu.br">
+                    08230134.sce@rub.edu.br
+                </a>
+            </article>
+
+            <!-- PHONE CARD -->
+            <article class="contact-card">
+                <div class="contact-icon" aria-hidden="true">
+                    📞
+                </div>
+
+                <h2>Call Us</h2>
+
+                <p>
+                    Feel free to contact us by phone:
+                </p>
+
+                <a href="tel:+97517774093">
+                    17774093
+                </a>
+            </article>
+
+        </section>
+
+        <!-- FEEDBACK MESSAGE -->
+        <section class="contact-note">
+            <h2>💡 We Would Love to Hear From You!</h2>
+
+            <div class="gold-divider"></div>
+
+            <p>
+                Your feedback helps us improve our website and make
+                learning Digital Number Systems more interesting,
+                interactive, and enjoyable.
+            </p>
+
+            <p>
+                Thank you for visiting DTI Learning Hub.
+                Happy Learning! 🌟
+            </p>
+        </section>
+
+        <!-- BACK TO HOME -->
+        <div class="home-button-container">
+            <a href="index.html" class="back-home">
+                <span aria-hidden="true">←</span>
+                Back to Home
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="contact-footer">
+            <p>© 2026 DTI Learning Hub | Digital Number Systems</p>
+
+            <p class="footer-tagline">
+                Learn • Explore • Practise • Discover
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>

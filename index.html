@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTI Learning Hub | Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #171717;
+            --red: #8B1E2D;
+            --gold: #D4AF37;
+            --cream: #F5EDE0;
+            --white: #FFF9EF;
+            --text: #242020;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HOME HERO SECTION */
+
+        .home-hero {
+            min-height: 440px;
+            padding: 65px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+           background: linear-gradient(120deg, #F7E8D4, #F8D9CB);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            color: var(--red);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            color: var(--black);
+            font-size: clamp(35px, 5vw, 56px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content > p:not(.eyebrow) {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .primary-button,
+        .secondary-button {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-button {
+            background: var(--red);
+            color: var(--white);
+            border: 1px solid var(--red);
+        }
+
+        .primary-button:hover {
+            background: var(--black);
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* BINARY NUMBER CARD */
+
+        .hero-art {
+            width: 280px;
+            min-width: 230px;
+            min-height: 270px;
+            padding: 25px;
+            background: var(--black);
+            border: 2px solid var(--gold);
+            border-radius: 48% 48% 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number-card {
+            width: 100%;
+            padding: 22px;
+            background: var(--cream);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .number-card span {
+            display: block;
+            color: var(--black);
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .number-card p {
+            margin-top: 12px;
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        /* LEARNING CARDS SECTION */
+
+        .welcome-section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            color: var(--black);
+            font-size: 34px;
+        }
+
+        .welcome-section > p:not(.eyebrow) {
+            margin: 12px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 35px;
+            text-align: left;
+        }
+
+        .feature-card {
+            display: block;
+            background: var(--white);
+            padding: 28px;
+            border: 1px solid var(--gold);
+            border-top: 5px solid var(--red);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px #17171712;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 22px #17171725;
+        }
+
+        .feature-icon {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card h3 {
+            color: var(--black);
+            margin: 12px 0;
+        }
+
+        .feature-card p {
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--black);
+            color: var(--gold);
+            text-align: center;
+            padding: 22px;
+            margin-top: 20px;
+            border-top: 3px solid var(--gold);
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 1000px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .home-hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 45px 6%;
+            }
+
+            .hero-art {
+                width: 250px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-section {
+                padding: 40px 6%;
+            }
+
+            .welcome-section h2 {
+                font-size: 28px;
+            }
+        }
+    /* ===== INTERACTIVE HOVER EFFECTS ===== */
+
+/* Smooth transitions for clickable elements */
+a,
+button,
+.lesson-card,
+.feature-card,
+.course-card,
+.resource-card,
+.card {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Cards lift slightly when hovered */
+.lesson-card:hover,
+.feature-card:hover,
+.course-card:hover,
+.resource-card:hover,
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons respond to mouse hover */
+button:hover,
+.primary-button:hover,
+.secondary-button:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+/* Links become easier to notice */
+a:hover {
+    cursor: pointer;
+}
+
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #D4AF37;
+    outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    a,
+    button,
+    .lesson-card,
+    .feature-card,
+    .course-card,
+    .resource-card,
+    .card {
+        transition: none;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <section class="home-hero">
+
+            <div class="hero-content">
+                <p class="eyebrow">WELCOME TO YOUR LEARNING SPACE</p>
+
+                <h1>Discover the Digital Number System</h1>
+
+                <p>
+                    Explore number systems, watch learning videos,
+                    practise questions, and discover how digital
+                    numbers are used in everyday life.
+                </p>
+
+                <a href="courses.html" class="primary-button">
+                    Explore Courses →
+                </a>
+            </div>
+
+            <div class="hero-art">
+                <div class="number-card">
+                    <span>1010</span>
+                    <span>1101</span>
+                    <span>1001</span>
+                    <p>Think in Binary!</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="welcome-section">
+
+            <p class="eyebrow">LEARN • WATCH • PRACTISE</p>
+
+            <h2>Start Your Learning Journey</h2>
+
+            <p>
+                Choose an activity and explore the world of digital numbers.
+            </p>
+
+            <div class="feature-grid">
+
+                <a href="courses.html" class="feature-card">
+                    <span class="feature-icon">📘</span>
+                    <h3>Online Course</h3>
+                    <p>
+                        Learn number systems through five organised lessons.
+                    </p>
+                    <span class="card-link">Start Learning →</span>
+                </a>
+
+                <a href="video.html" class="feature-card">
+                    <span class="feature-icon">▶️</span>
+                    <h3>Learning Videos</h3>
+                    <p>
+                        Watch YouTube videos to understand key concepts.
+                    </p>
+                    <span class="card-link">Watch Videos →</span>
+                </a>
+
+                <a href="quiz.html" class="feature-card">
+                    <span class="feature-icon">✏️</span>
+                    <h3>Interactive Quiz</h3>
+                    <p>
+                        Test your understanding and check your answers.
+                    </p>
+                    <span class="card-link">Take the Quiz →</span>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        DTI Learning Hub | Class 9 Digital Number System
+    </footer>
+
+</body>
+</html>

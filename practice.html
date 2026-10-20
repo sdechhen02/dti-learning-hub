@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171717">
+    <title>Practice Questions | DTI Learning Hub</title>
+
+    <style>
+        /* ========================================
+           DTI LEARNING HUB
+           Theme: Red, Black and Gold
+        ======================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #171717;
+            --dark-black: #101010;
+            --red: #B22222;
+            --dark-red: #701717;
+            --gold: #D4AF37;
+            --light-gold: #F5E6C8;
+            --cream: #FFF8F2;
+            --white: #FFFFFF;
+            --text: #242424;
+            --muted: #655D57;
+            --border: #D4AF37;
+            --correct: #2E7D32;
+            --incorrect: #B22222;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+
+        .practice-hero {
+            background: linear-gradient(
+                120deg,
+                var(--black),
+                var(--dark-red)
+            );
+            padding: 60px 8%;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .practice-hero h1 {
+            color: var(--gold);
+            font-size: clamp(32px, 5vw, 46px);
+            margin: 12px 0;
+            line-height: 1.2;
+        }
+
+        .practice-hero p:not(.eyebrow) {
+            max-width: 760px;
+            margin: 14px auto 0;
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        /* ========================================
+           MAIN CONTENT
+        ======================================== */
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 35px auto;
+        }
+
+        .practice-section {
+            margin: 28px 0;
+        }
+
+        .practice-section > h2 {
+            color: var(--black);
+            border-left: 5px solid var(--red);
+            padding-left: 14px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .practice-intro {
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        /* ========================================
+           QUESTION CARDS
+        ======================================== */
+
+        .practice-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--red);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 18px 0;
+            box-shadow: 0 5px 15px #1717170D;
+            transition: box-shadow 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        .practice-card:hover {
+            box-shadow: 0 8px 20px #17171716;
+        }
+
+        .practice-card h3 {
+            color: var(--black);
+            margin-bottom: 12px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .practice-card label {
+            display: block;
+            margin: 10px 0;
+            padding: 9px 12px;
+            border: 1px solid #E8E0D5;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background 0.2s ease,
+                        border-color 0.2s ease;
+        }
+
+        .practice-card label:hover {
+            background: var(--light-gold);
+            border-color: var(--gold);
+        }
+
+        .practice-card input[type="radio"],
+        .practice-card input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            accent-color: var(--red);
+        }
+
+        .conversion-answer {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #C9BDAA;
+            border-radius: 7px;
+            background: var(--cream);
+            color: var(--text);
+            outline: none;
+        }
+
+        .conversion-answer:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px #B222221A;
+        }
+
+        .practice-feedback {
+            margin-top: 12px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           SCORE PANEL
+        ======================================== */
+
+        .score-panel {
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--gold);
+            border-radius: 14px;
+            padding: 28px 22px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .score-panel h2 {
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .score-panel > p {
+            margin: 8px 0;
+        }
+
+        .score-number {
+            font-size: clamp(30px, 5vw, 40px);
+            font-weight: bold;
+            color: var(--gold);
+            margin: 12px 0;
+        }
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+
+        .button,
+        button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 6px;
+            border: 1px solid var(--red);
+            border-radius: 7px;
+            background: var(--red);
+            color: var(--white);
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s ease,
+                        color 0.2s ease,
+                        border-color 0.2s ease;
+        }
+
+        .button:hover,
+        button:hover {
+            background: var(--dark-red);
+            border-color: var(--gold);
+        }
+
+        .secondary-button {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        .secondary-button:hover {
+            background: var(--light-gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        /* ========================================
+           ANSWER KEY
+        ======================================== */
+
+        .answer-key {
+            margin-top: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .answer-key summary {
+            cursor: pointer;
+            color: var(--white);
+            font-weight: bold;
+            padding: 17px 20px;
+            background: var(--black);
+            border-left: 5px solid var(--gold);
+            list-style-position: inside;
+        }
+
+        .answer-key summary:hover {
+            background: var(--dark-red);
+        }
+
+        .answer-content {
+            background: var(--white);
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .answer-content ol {
+            padding-left: 24px;
+        }
+
+        .answer-content li {
+            margin: 10px 0;
+            padding-left: 4px;
+        }
+
+        .answer-content strong {
+            color: var(--red);
+        }
+
+        /* ========================================
+           PAGE NAVIGATION LINKS
+        ======================================== */
+
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px 0;
+            align-items: center;
+        }
+
+        .resource-links .button {
+            margin: 0;
+        }
+
+        .home-button {
+            background: var(--black);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .home-button:hover {
+            background: var(--red);
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 24px 15px;
+            margin-top: 45px;
+            border-top: 4px solid var(--gold);
+        }
+
+        footer strong {
+            color: var(--gold);
+        }
+
+        /* ========================================
+           ACCESSIBILITY
+        ======================================== */
+
+        a:focus-visible,
+        button:focus-visible,
+        summary:focus-visible,
+        input:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+
+        @media (max-width: 600px) {
+            .practice-hero {
+                padding: 42px 6%;
+            }
+
+            .practice-hero p:not(.eyebrow) {
+                font-size: 16px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 25px auto;
+            }
+
+            .practice-card {
+                padding: 18px;
+            }
+
+            .practice-card h3 {
+                font-size: 17px;
+            }
+
+            .score-panel {
+                padding: 22px 14px;
+            }
+
+            .button,
+            button {
+                padding: 11px 15px;
+                font-size: 14px;
+            }
+
+            .resource-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .resource-links .button {
+                width: 100%;
+            }
+
+            .answer-content {
+                padding: 17px;
+            }
+        }
+
+        /* ========================================
+           REDUCED MOTION
+        ======================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation bar removed as requested -->
+
+<main>
+
+    <!-- HERO SECTION -->
+    <section class="practice-hero">
+        <p class="eyebrow">PRACTISE • THINK • IMPROVE</p>
+
+        <h1>Digital Number System Practice</h1>
+
+        <p>
+            Test your knowledge of decimal, binary, octal and
+            hexadecimal number systems. Answer the questions,
+            check your results and practise until you feel confident.
+        </p>
+    </section>
+
+    <div class="container">
+
+        <form id="practiceForm">
+
+            <!-- SECTION 1: MULTIPLE CHOICE -->
+            <section class="practice-section">
+                <h2>Section 1: Multiple-Choice Questions</h2>
+
+                <p class="practice-intro">
+                    Choose one correct answer for each question.
+                </p>
+
+                <div class="practice-card">
+                    <h3>1. What is the base of the binary number system?</h3>
+
+                    <label>
+                        <input type="radio" name="q1" value="a"> 2
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="b"> 8
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="c"> 10
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q1" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>2. Which digits are used in the octal number system?</h3>
+
+                    <label>
+                        <input type="radio" name="q2" value="a"> 0–9
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="b"> 0–7
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="c"> 0 and 1
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q2" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>3. What is the base of the hexadecimal number system?</h3>
+
+                    <label>
+                        <input type="radio" name="q3" value="a"> 8
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="b"> 10
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="c"> 16
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q3" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>4. Which symbol is NOT valid in a binary number?</h3>
+
+                    <label>
+                        <input type="radio" name="q4" value="a"> 0
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="b"> 1
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="c"> 2
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q4" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>5. Which hexadecimal digit represents decimal 15?</h3>
+
+                    <label>
+                        <input type="radio" name="q5" value="a"> E
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="b"> F
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="c"> A
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q5" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: CONVERSIONS -->
+            <section class="practice-section">
+                <h2>Section 2: Number-System Conversions</h2>
+
+                <p class="practice-intro">
+                    Enter your answers using the requested number system.
+                    You may use uppercase or lowercase letters for hexadecimal.
+                </p>
+
+                <div class="practice-card">
+                    <h3>6. Convert 10110₂ to decimal.</h3>
+
+                    <input
+                        class="conversion-answer"
+                        type="text"
+                        id="q6"
+                        name="q6"
+                        placeholder="Enter your answer"
+                        autocomplete="off"
+                        aria-label="Answer to question 6"
+                    >
+
+                    <p class="practice-feedback" id="feedback-q6" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>7. Convert 110101₂ to decimal.</h3>
+
+                    <input
+                        class="conversion-answer"
+                        type="text"
+                        id="q7"
+                        name="q7"
+                        placeholder="Enter your answer"
+                        autocomplete="off"
+                        aria-label="Answer to question 7"
+                    >
+
+                    <p class="practice-feedback" id="feedback-q7" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>8. Convert 10110₂ to octal.</h3>
+
+                    <input
+                        class="conversion-answer"
+                        type="text"
+                        id="q8"
+                        name="q8"
+                        placeholder="Enter your answer"
+                        autocomplete="off"
+                        aria-label="Answer to question 8"
+                    >
+
+                    <p class="practice-feedback" id="feedback-q8" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>9. Convert 157₈ to decimal.</h3>
+
+                    <input
+                        class="conversion-answer"
+                        type="text"
+                        id="q9"
+                        name="q9"
+                        placeholder="Enter your answer"
+                        autocomplete="off"
+                        aria-label="Answer to question 9"
+                    >
+
+                    <p class="practice-feedback" id="feedback-q9" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>10. Convert 2F₁₆ to decimal.</h3>
+
+                    <input
+                        class="conversion-answer"
+                        type="text"
+                        id="q10"
+                        name="q10"
+                        placeholder="Enter your answer"
+                        autocomplete="off"
+                        aria-label="Answer to question 10"
+                    >
+
+                    <p class="practice-feedback" id="feedback-q10" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: TRUE OR FALSE -->
+            <section class="practice-section">
+                <h2>Section 3: True or False</h2>
+
+                <div class="practice-card">
+                    <h3>11. The decimal number system uses ten symbols, from 0 to 9.</h3>
+
+                    <label>
+                        <input type="radio" name="q11" value="true"> True
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q11" value="false"> False
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q11" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>12. The digit 9 is valid in the octal number system.</h3>
+
+                    <label>
+                        <input type="radio" name="q12" value="true"> True
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q12" value="false"> False
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q12" aria-live="polite"></p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>13. One hexadecimal digit represents four binary bits.</h3>
+
+                    <label>
+                        <input type="radio" name="q13" value="true"> True
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q13" value="false"> False
+                    </label>
+
+                    <p class="practice-feedback" id="feedback-q13" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <!-- SCORE PANEL -->
+            <section class="score-panel">
+                <h2>Your Practice Result</h2>
+
+                <p>Complete all 13 questions and submit your answers.</p>
+
+                <p class="score-number" id="scoreNumber">— / 13</p>
+
+                <p id="scoreMessage" aria-live="polite">
+                    Your result will appear here.
+                </p>
+
+                <button type="submit">Check My Answers</button>
+
+                <button type="reset" class="secondary-button">
+                    Try Again
+                </button>
+            </section>
+
+        </form>
+
+        <!-- ANSWER KEY -->
+        <details class="answer-key">
+            <summary>View Answer Key and Explanations</summary>
+
+            <div class="answer-content">
+                <ol>
+                    <li>
+                        <strong>2:</strong>
+                        Binary uses two symbols, 0 and 1.
+                    </li>
+
+                    <li>
+                        <strong>0–7:</strong>
+                        Octal has eight symbols.
+                    </li>
+
+                    <li>
+                        <strong>16:</strong>
+                        Hexadecimal uses 0–9 and A–F.
+                    </li>
+
+                    <li>
+                        <strong>2:</strong>
+                        Binary permits only 0 and 1.
+                    </li>
+
+                    <li>
+                        <strong>F:</strong>
+                        F represents decimal 15.
+                    </li>
+
+                    <li>
+                        <strong>22:</strong>
+                        10110₂ = 16 + 4 + 2 = 22₁₀.
+                    </li>
+
+                    <li>
+                        <strong>53:</strong>
+                        110101₂ = 32 + 16 + 4 + 1 = 53₁₀.
+                    </li>
+
+                    <li>
+                        <strong>26:</strong>
+                        Group 10110₂ as 010 110, giving 2 and 6 in octal.
+                    </li>
+
+                    <li>
+                        <strong>111:</strong>
+                        157₈ = (1 × 64) + (5 × 8) + 7 = 111₁₀.
+                    </li>
+
+                    <li>
+                        <strong>47:</strong>
+                        2F₁₆ = (2 × 16) + 15 = 47₁₀.
+                    </li>
+
+                    <li>
+                        <strong>True:</strong>
+                        Decimal uses the digits 0–9.
+                    </li>
+
+                    <li>
+                        <strong>False:</strong>
+                        Octal uses only the digits 0–7.
+                    </li>
+
+                    <li>
+                        <strong>True:</strong>
+                        Four bits can represent 16 different patterns,
+                        matching the 16 hexadecimal symbols.
+                    </li>
+                </ol>
+            </div>
+        </details>
+
+        <!-- PAGE LINKS -->
+        <div class="resource-links">
+            <a href="index.html" class="button home-button">
+                &larr; Back to Home
+            </a>
+
+            <a href="real-life.html" class="button">
+                Explore Real-Life Uses &rarr;
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p><strong>DTI Learning Hub</strong> | Class 9 Digital Number System</p>
+</footer>
+
+<script>
+    const practiceForm = document.getElementById("practiceForm");
+
+    const correctAnswers = {
+        q1: "a",
+        q2: "b",
+        q3: "c",
+        q4: "c",
+        q5: "b",
+        q6: "22",
+        q7: "53",
+        q8: "6",
+        q9: "111",
+        q10: "47",
+        q11: "true",
+        q12: "false",
+        q13: "true"
+    };
+
+    const explanations = {
+        q1: "Binary has base 2 and uses 0 and 1.",
+        q2: "Octal uses digits 0 through 7.",
+        q3: "Hexadecimal has base 16.",
+        q4: "The digit 2 is not allowed in binary.",
+        q5: "F represents decimal 15.",
+        q6: "10110₂ = 16 + 4 + 2 = 22₁₀.",
+        q7: "110101₂ = 32 + 16 + 4 + 1 = 53₁₀.",
+        q8: "10110₂ becomes 010 110. These groups give 2 and 6, so the octal answer is 26₈.",
+        q9: "157₈ = (1 × 64) + (5 × 8) + 7 = 111₁₀.",
+        q10: "2F₁₆ = (2 × 16) + 15 = 47₁₀.",
+        q11: "Decimal uses ten digits: 0 through 9.",
+        q12: "Octal does not allow 8 or 9.",
+        q13: "One hexadecimal digit corresponds to four binary bits."
+    };
+
+    const conversionQuestions = ["q6", "q7", "q8", "q9", "q10"];
+
+    practiceForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let score = 0;
+        let unanswered = 0;
+
+        for (const question in correctAnswers) {
+            let userAnswer = "";
+
+            if (conversionQuestions.includes(question)) {
+                userAnswer = document.getElementById(question)
+                    .value.trim().toLowerCase();
+            } else {
+                const selected = practiceForm.querySelector(
+                    'input[name="' + question + '"]:checked'
+                );
+
+                userAnswer = selected ? selected.value : "";
+            }
+
+            const feedback = document.getElementById(
+                "feedback-" + question
+            );
+
+            if (!userAnswer) {
+                unanswered++;
+
+                feedback.textContent =
+                    "Not answered. " + explanations[question];
+
+                feedback.style.color = "var(--incorrect)";
+            } else if (userAnswer === correctAnswers[question]) {
+                score++;
+
+                feedback.textContent =
+                    "Correct! " + explanations[question];
+
+                feedback.style.color = "var(--correct)";
+            } else {
+                feedback.textContent =
+                    "Incorrect. " + explanations[question];
+
+                feedback.style.color = "var(--incorrect)";
+            }
+        }
+
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        document.getElementById("scoreNumber").textContent =
+            score + " / " + totalQuestions;
+
+        const scoreMessage = document.getElementById("scoreMessage");
+
+        if (unanswered > 0) {
+            scoreMessage.textContent =
+                "You left " + unanswered +
+                " question(s) unanswered. Review the feedback and try again.";
+        } else if (score === totalQuestions) {
+            scoreMessage.textContent =
+                "Excellent! You answered every question correctly.";
+        } else if (score >= 9) {
+            scoreMessage.textContent =
+                "Well done! Review the explanations for the questions you missed.";
+        } else {
+            scoreMessage.textContent =
+                "Keep practising! Review the lessons and try again.";
+        }
+
+        document.getElementById("scoreNumber").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    });
+
+    practiceForm.addEventListener("reset", function() {
+        setTimeout(function() {
+            document.querySelectorAll(".practice-feedback").forEach(function(item) {
+                item.textContent = "";
+                item.style.color = "";
+            });
+
+            document.getElementById("scoreNumber").textContent = "— / 13";
+
+            document.getElementById("scoreMessage").textContent =
+                "Your result will appear here.";
+        }, 0);
+    });
+</script>
+
+</body>
+</html>

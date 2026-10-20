@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | Class IX DTI Learning Hub</title>
+
+    <style>
+        :root {
+            --maroon: #702b3a;
+            --dark-maroon: #4b1d28;
+            --black: #171414;
+            --charcoal: #242020;
+            --gold: #c5a04f;
+            --light-gold: #e3c878;
+            --cream: #faf7f1;
+            --white: #ffffff;
+            --text: #302a2a;
+            --muted: #716969;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        header {
+            background: var(--black);
+            color: var(--white);
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 76px;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 21px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-list > li {
+            position: relative;
+        }
+
+        .nav-list a,
+        .dropdown-toggle {
+            color: #f5f1eb;
+            font-size: 14px;
+            font-family: inherit;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-list a:hover,
+        .nav-list a.active,
+        .dropdown-toggle:hover,
+        .dropdown.open .dropdown-toggle {
+            color: var(--light-gold);
+        }
+
+        .dropdown-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 0;
+        }
+
+        .arrow {
+            font-size: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* DROPDOWN MENU */
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 210px;
+            list-style: none;
+            padding: 7px;
+            background: var(--charcoal);
+            border: 1px solid #403535;
+            border-top: 2px solid var(--gold);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown.open .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 11px 13px;
+            border-radius: 5px;
+            color: #f5f1eb;
+        }
+
+        .dropdown-menu li a:hover {
+            background: var(--dark-maroon);
+            color: var(--white);
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            background: linear-gradient(
+                120deg,
+                #4b1d28 0%,
+                #702b3a 70%,
+                #59303a 100%
+            );
+            color: var(--white);
+            padding: 65px 24px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--light-gold);
+            border: 1px solid rgba(227, 200, 120, 0.55);
+            border-radius: 30px;
+            padding: 5px 15px;
+            margin-bottom: 18px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 45px);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--light-gold);
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #f1e7e8;
+            font-size: 16px;
+        }
+
+        /* MAIN CONTENT */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px 24px 65px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            color: var(--dark-maroon);
+            font-size: 29px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* RESOURCE CARDS */
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border: 1px solid #e9e1d9;
+            border-radius: 13px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(40, 25, 25, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(40, 25, 25, 0.1);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f4e8e8;
+            border-radius: 12px;
+            font-size: 29px;
+            margin-bottom: 20px;
+        }
+
+        .resource-card h3 {
+            color: var(--dark-maroon);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .resource-card p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 22px;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .resource-card ul li {
+            padding: 7px 0;
+            font-size: 14px;
+            color: #514747;
+        }
+
+        .resource-card ul li::before {
+            content: "✓";
+            color: var(--maroon);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .resource-button {
+            display: inline-block;
+            background: var(--maroon);
+            color: var(--white);
+            padding: 11px 19px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.2s ease;
+        }
+
+        .resource-button:hover {
+            background: var(--dark-maroon);
+        }
+
+        /* HELP SECTION */
+
+        .help-section {
+            margin-top: 45px;
+            padding: 28px;
+            text-align: center;
+            background: #f0e8df;
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        .help-section h3 {
+            color: var(--dark-maroon);
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .help-section p {
+            color: #655b56;
+            font-size: 15px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--black);
+            color: #d7ceca;
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 13px;
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+        /* MOBILE RESPONSIVENESS */
+
+        @media (max-width: 760px) {
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+                padding: 17px 15px;
+            }
+
+            .logo {
+                font-size: 19px;
+                white-space: normal;
+                text-align: center;
+            }
+
+            .nav-list {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 20px;
+            }
+
+            .nav-list a,
+            .dropdown-toggle {
+                font-size: 13px;
+            }
+
+            .dropdown-menu {
+                right: 0;
+                z-index: 1001;
+            }
+
+            .hero {
+                padding: 48px 20px;
+            }
+
+            main {
+                padding: 40px 18px 50px;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-card {
+                padding: 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <span class="hero-label">Learning Support</span>
+
+            <h1>
+                Explore Your <span>Learning Resources</span>
+            </h1>
+
+            <p>
+                Find useful learning materials, classroom resources, and
+                supporting information to help you teach and learn Digital
+                Technology and Innovation with confidence.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <section class="section-heading">
+            <h2>Choose Your Resources</h2>
+            <p>
+                Select the section that suits your needs and explore the
+                resources available in the DTI Learning Hub.
+            </p>
+        </section>
+
+        <section class="resource-grid" aria-label="Resource categories">
+
+            <!-- STUDENT RESOURCES -->
+            <article class="resource-card">
+
+                <div class="resource-icon" aria-hidden="true">📚</div>
+
+                <h3>Student Resources</h3>
+
+                <p>
+                    Support your learning with helpful materials for
+                    understanding DTI concepts and practising your skills.
+                </p>
+
+                <ul>
+                    <li>Learning notes and revision materials</li>
+                    <li>Practice activities and examples</li>
+                    <li>Helpful links for independent learning</li>
+                </ul>
+
+                <a href="student-resources.html" class="resource-button">
+                    Explore Student Resources →
+                </a>
+
+            </article>
+
+            <!-- TEACHER RESOURCES -->
+            <article class="resource-card">
+
+                <div class="resource-icon" aria-hidden="true">🧑‍🏫</div>
+
+                <h3>Teacher Resources</h3>
+
+                <p>
+                    Access supporting materials that can help with lesson
+                    preparation, classroom teaching, and student learning.
+                </p>
+
+                <ul>
+                    <li>Teaching and learning materials</li>
+                    <li>Classroom activities and examples</li>
+                    <li>Resources for supporting learners</li>
+                </ul>
+
+                <a href="teacher-resources.html" class="resource-button">
+                    Explore Teacher Resources →
+                </a>
+
+            </article>
+
+        </section>
+
+        <!-- HELP SECTION -->
+        <section class="help-section">
+
+            <h3>Keep Exploring and Learning</h3>
+
+            <p>
+                Use the available learning materials to review concepts,
+                practise your skills, and build your understanding of DTI.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 <span>DTI Learning Hub</span> |
+            Digital Technology and Innovation
+        </p>
+    </footer>
+
+    <!-- WORKING DROPDOWN SCRIPT -->
+    <script>
+        const dropdown = document.getElementById("resourcesDropdown");
+        const toggle = document.getElementById("resourcesToggle");
+
+        function closeDropdown() {
+            dropdown.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+        }
+
+        toggle.addEventListener("click", function () {
+            const isOpen = dropdown.classList.contains("open");
+
+            if (isOpen) {
+                closeDropdown();
+            } else {
+                dropdown.classList.add("open");
+                toggle.setAttribute("aria-expanded", "true");
+            }
+        });
+
+        // Close the dropdown when clicking outside it.
+        document.addEventListener("click", function (event) {
+            if (!dropdown.contains(event.target)) {
+                closeDropdown();
+            }
+        });
+
+        // Close the dropdown when the Escape key is pressed.
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeDropdown();
+                toggle.focus();
+            }
+        });
+    </script>
+
+</body>
+</html>

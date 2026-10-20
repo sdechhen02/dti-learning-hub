@@ -1,0 +1,1412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore digital number systems through real-life examples, interactive conversions, colour experiments and quizzes for Class IX DTI.">
+<title>Digital Number Systems in Real Life | DTI Learning Hub</title>
+
+<style>
+:root {
+    --black: #171515;
+    --black2: #292222;
+    --gold: #f2c14e;
+    --gold-light: #ffe6a0;
+    --gold-pale: #fff4d6;
+    --maroon: #8f1515;
+    --maroon-light: #c62828;
+    --cream: #fffaf0;
+    --white: #fff;
+    --text: #302727;
+    --muted: #685c54;
+    --border: #ead9ad;
+    --shadow: 0 8px 25px rgba(23,21,21,.08);
+    --hover: 0 15px 32px rgba(23,21,21,.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 90% 10%, #f2c14e15, transparent 30%),
+        linear-gradient(180deg, var(--cream), #fffdf8);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+button, input, select { font: inherit; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 3px solid var(--maroon-light);
+    outline-offset: 3px;
+}
+
+.container { width: min(1120px, 91%); margin: 0 auto; }
+section { scroll-margin-top: 20px; }
+
+.eyebrow {
+    color: var(--maroon);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h2 { font-size: clamp(25px, 4vw, 34px); line-height: 1.3; }
+h3 { line-height: 1.4; }
+.section-heading { margin-bottom: 24px; }
+.section-heading h2 { color: var(--black2); margin: 5px 0 8px; }
+.section-heading p { color: var(--muted); max-width: 760px; }
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 80% 40%, #f2c14e20, transparent 28%),
+        linear-gradient(125deg, var(--black), var(--black2) 60%, #421b22);
+    color: var(--white);
+    padding: 65px 5% 58px;
+    text-align: center;
+    border-bottom: 5px solid var(--gold);
+}
+
+.hero::before, .hero::after {
+    content: "101101";
+    position: absolute;
+    color: #f2c14e16;
+    font: bold 44px monospace;
+    letter-spacing: 9px;
+    transform: rotate(-20deg);
+    pointer-events: none;
+}
+.hero::before { top: 25px; left: -35px; }
+.hero::after { bottom: 25px; right: -30px; }
+
+.hero-content { position: relative; z-index: 1; max-width: 850px; margin: auto; }
+
+.hero .eyebrow { color: var(--gold); }
+.hero h1 { font-size: clamp(34px, 5.5vw, 55px); line-height: 1.13; margin: 14px 0 18px; }
+.hero h1 span { color: var(--gold); }
+.hero p:not(.eyebrow) { max-width: 750px; margin: 0 auto; color: #f4eee5; font-size: 17px; }
+
+.hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    padding: 11px 19px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: .2s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn-gold { background: var(--gold); color: var(--black); border-color: var(--gold); }
+.btn-gold:hover { background: var(--white); border-color: var(--white); }
+.btn-dark { background: var(--black); color: var(--gold); border-color: var(--black); }
+.btn-dark:hover { background: var(--maroon); border-color: var(--maroon); color: white; }
+.btn-outline { background: transparent; color: var(--black); border-color: var(--border); }
+.btn-outline:hover { border-color: var(--maroon); color: var(--maroon); }
+
+.quick-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 28px auto 42px;
+}
+
+.quick-item {
+    text-align: center;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 17px 10px;
+    box-shadow: var(--shadow);
+    transition: .2s ease;
+}
+.quick-item:hover { transform: translateY(-4px); border-color: var(--gold); }
+.quick-item strong { display: block; color: var(--maroon); font-size: 23px; }
+.quick-item span { font-size: 13px; color: var(--muted); }
+
+.section { margin: 45px auto; }
+
+.panel {
+    background: white;
+    padding: clamp(22px, 4vw, 34px);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.intro-panel { border-top: 5px solid var(--gold); }
+.intro-panel h2 { color: var(--maroon); margin-bottom: 12px; }
+.intro-panel p { margin-bottom: 12px; }
+
+.mini-fact {
+    background: linear-gradient(145deg, var(--black), #43232a);
+    color: white;
+    border-radius: 15px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.mini-fact::after {
+    content: "01";
+    position: absolute;
+    right: -4px;
+    bottom: -45px;
+    font: bold 140px monospace;
+    color: #f2c14e14;
+}
+.mini-fact > * { position: relative; z-index: 1; }
+.mini-fact .big-symbol { font-size: 45px; color: var(--gold); }
+.mini-fact h3 { font-size: 22px; color: var(--gold); margin: 8px 0; }
+.mini-fact p { color: #f4eee5; }
+
+/* Number system overview */
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.system-card {
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 20px;
+    background: white;
+    transition: .2s;
+}
+.system-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.system-card .base { color: var(--muted); font-size: 13px; }
+.system-card h3 { color: var(--maroon); margin: 6px 0; }
+.system-card .symbols { font: bold 20px monospace; color: var(--black); }
+.system-card .system-icon { font-size: 28px; }
+
+/* Real-life cards */
+
+.real-life-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.real-life-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--black);
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.real-life-card:hover { transform: translateY(-5px); box-shadow: var(--hover); border-top-color: var(--gold); }
+
+.card-top { display: flex; align-items: center; gap: 15px; }
+.example-icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 14px;
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    font-size: 32px;
+}
+.card-top h3 { color: var(--maroon); font-size: 20px; }
+.real-life-card > p { margin-top: 15px; }
+
+.example-tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 7px 12px;
+    border-radius: 7px;
+    background: var(--black);
+    color: var(--gold);
+    font: bold 13px monospace;
+    overflow-wrap: anywhere;
+}
+
+.learn-more {
+    display: block;
+    margin-top: 17px;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    border-radius: 8px;
+    color: var(--maroon);
+    padding: 10px 12px;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+}
+.learn-more:hover { background: var(--gold-pale); }
+
+.extra-info { display: none; padding-top: 13px; color: var(--muted); }
+.extra-info.open { display: block; animation: appear .25s ease; }
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Converter */
+
+.converter {
+    background:
+        radial-gradient(circle at 95% 5%, #f2c14e18, transparent 25%),
+        linear-gradient(135deg, var(--black), #302323);
+    color: white;
+    border-radius: 17px;
+    padding: clamp(23px, 4vw, 36px);
+    box-shadow: var(--shadow);
+}
+.converter .eyebrow { color: var(--gold); }
+.converter h2 { color: white; margin: 7px 0 8px; }
+.converter > p { color: #e7ded3; }
+
+.converter-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 12px;
+    margin: 24px 0;
+    align-items: end;
+}
+.field label { display: block; color: var(--gold-light); font-size: 13px; margin-bottom: 6px; }
+.field input, .field select {
+    width: 100%;
+    min-height: 47px;
+    padding: 10px 12px;
+    border: 1px solid #85776a;
+    border-radius: 8px;
+    background: #fffaf0;
+    color: var(--black);
+}
+.field input:focus, .field select:focus { outline: 3px solid var(--gold); }
+
+.conversion-results {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+.result-card {
+    background: #ffffff0d;
+    border: 1px solid #f2c14e55;
+    border-radius: 10px;
+    padding: 17px;
+    min-width: 0;
+}
+.result-card span { display: block; color: var(--gold-light); font-size: 13px; }
+.result-card strong {
+    display: block;
+    margin-top: 8px;
+    font: bold clamp(18px, 2.4vw, 26px) monospace;
+    color: var(--gold);
+    overflow-wrap: anywhere;
+}
+.converter-note { margin-top: 17px; font-size: 13px; color: #e7ded3; }
+
+/* Colour lab */
+
+.colour-lab {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: stretch;
+}
+.colour-preview {
+    min-height: 250px;
+    background: #ff0000;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    transition: background .15s;
+    box-shadow: inset 0 0 0 1px #0001;
+}
+.colour-preview strong { font: bold 27px monospace; text-shadow: 0 2px 8px #0006; }
+.colour-preview span { text-shadow: 0 2px 8px #0006; }
+
+.slider-row { margin: 15px 0; }
+.slider-label { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
+.slider-label label { font-weight: bold; }
+.slider-label output { font-family: monospace; }
+.slider-row input[type="range"] { width: 100%; accent-color: var(--maroon); cursor: pointer; }
+.colour-code {
+    background: var(--gold-pale);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font: bold 21px monospace;
+    margin: 16px 0 12px;
+    color: var(--black);
+    border: 1px solid var(--border);
+}
+.colour-swatches { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 13px; }
+.swatch {
+    width: 38px; height: 38px;
+    border: 2px solid white;
+    outline: 1px solid var(--border);
+    border-radius: 50%;
+    transition: transform .2s;
+}
+.swatch:hover { transform: scale(1.12); }
+
+/* Comparison table */
+
+.table-wrapper { overflow-x: auto; margin-top: 18px; border-radius: 9px; }
+table { border-collapse: collapse; width: 100%; min-width: 500px; background: white; }
+th, td { padding: 13px; text-align: left; border: 1px solid var(--border); }
+th { background: var(--black); color: var(--gold); }
+tbody tr:nth-child(even) { background: var(--gold-pale); }
+tbody tr:hover { background: var(--gold-light); }
+
+/* Did you know */
+
+.fact-banner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 18px;
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    border-left: 6px solid var(--maroon);
+    border-radius: 13px;
+    padding: 25px;
+}
+.fact-banner .fact-icon { font-size: 38px; }
+.fact-banner h2 { font-size: 24px; color: var(--maroon); margin-bottom: 7px; }
+
+/* Quiz */
+
+.quiz-panel { border-top: 5px solid var(--gold); }
+.quiz-panel h2 { margin-bottom: 7px; }
+.quiz-panel > p { color: var(--muted); }
+
+.quiz-progress {
+    height: 9px;
+    background: #eee4cf;
+    border-radius: 20px;
+    margin: 19px 0 8px;
+    overflow: hidden;
+}
+.quiz-progress-bar { height: 100%; width: 0%; background: var(--maroon); transition: width .25s; }
+.quiz-progress-label { font-size: 13px; color: var(--muted); }
+
+.quiz-question {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    margin: 19px 0;
+    background: #fffdf8;
+    min-width: 0;
+}
+.quiz-question legend { color: var(--maroon); font-weight: bold; padding: 0 7px; }
+.quiz-question label {
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 6px 0;
+    cursor: pointer;
+    transition: background .2s;
+}
+.quiz-question label:hover { background: var(--gold-pale); }
+.quiz-question input { accent-color: var(--maroon); margin-right: 8px; }
+
+.quiz-feedback {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 9px;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.success { background: #e6f4e8; border-left: 5px solid #31834a; color: #205d31; }
+.quiz-feedback.try-again { background: #f8e9e6; border-left: 5px solid var(--maroon); color: var(--maroon); }
+.quiz-feedback h3 { margin-bottom: 5px; }
+
+.quiz-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+/* Challenge */
+
+.challenge {
+    background: linear-gradient(130deg, #fff4d6, #fffdf8);
+    border: 1px solid var(--gold);
+    border-radius: 15px;
+    padding: clamp(23px, 4vw, 32px);
+}
+.challenge h2 { color: var(--maroon); margin: 6px 0; }
+.challenge-question {
+    margin: 18px 0;
+    padding: 18px;
+    border-radius: 9px;
+    background: white;
+    border: 1px solid var(--border);
+}
+.challenge-options { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.challenge-options button { min-width: 100px; }
+.challenge-feedback { margin-top: 14px; font-weight: bold; }
+.challenge-feedback:empty { display: none; }
+
+/* Takeaways */
+
+.takeaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+.takeaway {
+    display: flex;
+    gap: 11px;
+    padding: 15px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.takeaway span { color: var(--maroon); font-size: 20px; font-weight: bold; }
+
+/* Resource links and footer */
+
+.resource-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 38px 0; }
+
+footer {
+    background: linear-gradient(125deg, var(--black), var(--black2), #421b22);
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 50px;
+    border-top: 5px solid var(--gold);
+}
+footer strong { display: block; color: var(--gold); font-size: 20px; }
+footer p { margin: 5px 0; }
+footer p:last-child { color: #e7ded3; font-size: 13px; }
+
+@media (max-width: 800px) {
+    .intro-grid, .colour-lab { grid-template-columns: 1fr; }
+    .system-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .conversion-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .converter-controls { grid-template-columns: 1fr 1fr; }
+    .converter-controls .btn { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+    .hero { padding: 47px 5%; }
+    .hero p:not(.eyebrow) { font-size: 15px; }
+    .quick-strip { grid-template-columns: repeat(2, 1fr); margin-top: 20px; }
+    .real-life-grid, .takeaway-grid { grid-template-columns: 1fr; }
+    .system-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .system-card { padding: 15px; }
+    .system-card .symbols { font-size: 17px; }
+    .converter-controls { grid-template-columns: 1fr; }
+    .converter-controls .btn { grid-column: auto; }
+    .conversion-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-actions, .quiz-buttons { flex-direction: column; }
+    .hero-actions .btn, .quiz-buttons .btn { width: 100%; }
+    .resource-links { flex-direction: column; }
+    .resource-links .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">Class IX • Digital Technology and Innovation</p>
+        <h1>Digital Number Systems <span>in Real Life</span></h1>
+        <p>
+            From the phone in your hand to the colours on your screen,
+            number systems help digital technology work. Explore how
+            they are used, experiment with numbers, and test your skills!
+        </p>
+        <div class="hero-actions">
+            <a href="#applications" class="btn btn-gold">Explore Real-Life Uses ↓</a>
+            <a href="#converter" class="btn btn-outline" style="color:white;border-color:#f2c14e">
+                Try Number Converter
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+<!-- QUICK FACTS -->
+<div class="quick-strip">
+    <div class="quick-item"><strong>2</strong><span>Binary base</span></div>
+    <div class="quick-item"><strong>8</strong><span>Octal base</span></div>
+    <div class="quick-item"><strong>10</strong><span>Decimal base</span></div>
+    <div class="quick-item"><strong>16</strong><span>Hexadecimal base</span></div>
+</div>
+
+<!-- INTRODUCTION -->
+<section class="section intro-grid" id="introduction">
+    <div class="panel intro-panel">
+        <p class="eyebrow">Start Here</p>
+        <h2>What are digital number systems?</h2>
+        <p>
+            A number system is a way of representing numbers using symbols
+            and rules. In digital technology, number systems help represent,
+            store and process information.
+        </p>
+        <p>
+            Decimal is commonly used in everyday counting. Digital computers
+            represent information using binary digits, 0 and 1. Octal and
+            hexadecimal provide more compact ways of writing binary values.
+        </p>
+        <p>
+            Select a number system below to revise its base and symbols.
+        </p>
+    </div>
+
+    <aside class="mini-fact">
+        <div class="big-symbol" aria-hidden="true">01</div>
+        <h3>Two digits. A digital world.</h3>
+        <p>
+            Binary uses only 0 and 1. These digits can represent two
+            distinguishable states in digital electronic circuits.
+        </p>
+    </aside>
+</section>
+
+<!-- FOUR NUMBER SYSTEMS -->
+<section class="section" id="systems">
+    <div class="section-heading">
+        <p class="eyebrow">Quick Revision</p>
+        <h2>Meet the Four Number Systems</h2>
+        <p>Remember the base and the symbols used in each system.</p>
+    </div>
+
+    <div class="system-grid">
+        <article class="system-card">
+            <div class="system-icon" aria-hidden="true">🔟</div>
+            <h3>Decimal</h3>
+            <p class="base">Base 10</p>
+            <div class="symbols">0–9</div>
+            <p>Used in everyday counting and calculations.</p>
+        </article>
+
+        <article class="system-card">
+            <div class="system-icon" aria-hidden="true">💻</div>
+            <h3>Binary</h3>
+            <p class="base">Base 2</p>
+            <div class="symbols">0, 1</div>
+            <p>Fundamental to digital data representation.</p>
+        </article>
+
+        <article class="system-card">
+            <div class="system-icon" aria-hidden="true">🧮</div>
+            <h3>Octal</h3>
+            <p class="base">Base 8</p>
+            <div class="symbols">0–7</div>
+            <p>Each octal digit maps to three binary bits.</p>
+        </article>
+
+        <article class="system-card">
+            <div class="system-icon" aria-hidden="true">🔠</div>
+            <h3>Hexadecimal</h3>
+            <p class="base">Base 16</p>
+            <div class="symbols">0–9, A–F</div>
+            <p>Each hexadecimal digit maps to four binary bits.</p>
+        </article>
+    </div>
+</section>
+
+<!-- REAL LIFE APPLICATIONS -->
+<section class="section" id="applications">
+    <div class="section-heading">
+        <p class="eyebrow">Learning Beyond the Classroom</p>
+        <h2>Where Are Number Systems Used?</h2>
+        <p>
+            Explore each example. Select “Discover how it works” to reveal
+            an extra fact.
+        </p>
+    </div>
+
+    <div class="real-life-grid">
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">💻</div>
+                <h3>1. Computers and Laptops</h3>
+            </div>
+            <p>
+                Computers represent data using binary. Text, pictures,
+                instructions and other information are encoded into digital
+                forms that computers can process.
+            </p>
+            <span class="example-tag">1010₂ = 10₁₀</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                The binary number 1010 means
+                1 × 8 + 0 × 4 + 1 × 2 + 0 × 1 = 10.
+                The small subscript identifies the number system's base.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">📱</div>
+                <h3>2. Smartphones</h3>
+            </div>
+            <p>
+                Smartphones process messages, photographs, applications
+                and audio as digital information. Binary representation
+                is fundamental to this processing.
+            </p>
+            <span class="example-tag">Digital data: 0s and 1s</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                When you take a photograph, your phone processes and stores
+                encoded image data. Hexadecimal can also help technicians
+                inspect low-level digital values.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">🎨</div>
+                <h3>3. Digital Colours</h3>
+            </div>
+            <p>
+                Many screens represent colours using red, green and blue
+                (RGB) components. Hexadecimal notation is a convenient
+                way to write these component values.
+            </p>
+            <span class="example-tag">Red: #FF0000</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                #FF0000 means red FF, green 00 and blue 00. Hexadecimal FF
+                equals decimal 255, so the red component is at its maximum
+                in this colour notation.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">🌐</div>
+                <h3>4. Websites and Programming</h3>
+            </div>
+            <p>
+                Web developers use hexadecimal colour codes to style
+                headings, backgrounds, borders and buttons. Programmers
+                also use hexadecimal to inspect digital values.
+            </p>
+            <span class="example-tag">CSS: #8F1515</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                The colour code above contains three hexadecimal pairs:
+                8F for red, 15 for green and 15 for blue. Changing these
+                pairs changes the displayed colour.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">🖼️</div>
+                <h3>5. Digital Images and Videos</h3>
+            </div>
+            <p>
+                Images and videos are represented as digital data.
+                Pixel values and compressed media information are encoded
+                so devices can store, edit and display them.
+            </p>
+            <span class="example-tag">Bits → Encoded data</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                A digital image is not stored as one long list of visible
+                colours. Its data is encoded according to an image format,
+                and video formats may compress many frames to reduce size.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">🧮</div>
+                <h3>6. Calculators and Digital Devices</h3>
+            </div>
+            <p>
+                Electronic calculators accept numbers and perform
+                calculations using digital circuits. People generally
+                enter decimal numbers, while internal operations use
+                digital representations.
+            </p>
+            <span class="example-tag">Decimal: 25</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                Decimal 25 can be written as binary 11001, octal 31,
+                or hexadecimal 19. They represent the same numerical value.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">🧩</div>
+                <h3>7. Octal Number System</h3>
+            </div>
+            <p>
+                Octal uses digits 0 to 7. Each octal digit corresponds
+                to three binary bits, making it possible to write
+                certain binary values more compactly.
+            </p>
+            <span class="example-tag">17₈ = 15₁₀</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                Octal 17 equals 1 × 8 + 7 = 15 in decimal.
+                Octal notation is also used to express file permissions
+                in Unix-like operating systems.
+            </div>
+        </article>
+
+        <article class="real-life-card">
+            <div class="card-top">
+                <div class="example-icon" aria-hidden="true">🔐</div>
+                <h3>8. Digital Data and Security</h3>
+            </div>
+            <p>
+                Digital systems store and communicate encoded information.
+                Binary is fundamental, while hexadecimal makes long
+                digital values easier for people to read.
+            </p>
+            <span class="example-tag">Hexadecimal: 2F</span>
+            <button class="learn-more" aria-expanded="false">＋ Discover how it works</button>
+            <div class="extra-info">
+                Hexadecimal 2F equals decimal 47. Hexadecimal notation
+                is useful in debugging and inspecting data, but a
+                hexadecimal value alone does not provide security.
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- INTERACTIVE NUMBER CONVERTER -->
+<section class="section" id="converter">
+    <div class="converter">
+        <p class="eyebrow">Hands-on Activity 01</p>
+        <h2>🔄 Number System Explorer</h2>
+        <p>
+            Enter a number, choose its original number system, and see
+            its equivalent in all four systems instantly.
+        </p>
+
+        <div class="converter-controls">
+            <div class="field">
+                <label for="numberInput">Enter a number</label>
+                <input id="numberInput" type="text" value="25"
+                       placeholder="Example: 25" autocomplete="off">
+            </div>
+
+            <div class="field">
+                <label for="numberBase">Original number system</label>
+                <select id="numberBase">
+                    <option value="10">Decimal (base 10)</option>
+                    <option value="2">Binary (base 2)</option>
+                    <option value="8">Octal (base 8)</option>
+                    <option value="16">Hexadecimal (base 16)</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-gold" id="convertBtn">
+                Convert Number →
+            </button>
+        </div>
+
+        <div class="conversion-results" aria-live="polite">
+            <div class="result-card">
+                <span>Decimal (base 10)</span>
+                <strong id="decimalResult">25</strong>
+            </div>
+            <div class="result-card">
+                <span>Binary (base 2)</span>
+                <strong id="binaryResult">11001</strong>
+            </div>
+            <div class="result-card">
+                <span>Octal (base 8)</span>
+                <strong id="octalResult">31</strong>
+            </div>
+            <div class="result-card">
+                <span>Hexadecimal (base 16)</span>
+                <strong id="hexResult">19</strong>
+            </div>
+        </div>
+
+        <p id="conversionMessage" class="converter-note" aria-live="polite">
+            Try entering 42 in decimal, or switch to binary and enter 101010.
+        </p>
+    </div>
+</section>
+
+<!-- INTERACTIVE COLOUR LAB -->
+<section class="section" id="colour-lab">
+    <div class="section-heading">
+        <p class="eyebrow">Hands-on Activity 02</p>
+        <h2>🎨 Hexadecimal Colour Lab</h2>
+        <p>
+            Adjust the red, green and blue values to create a colour.
+            Watch the hexadecimal code change as you experiment.
+        </p>
+    </div>
+
+    <div class="panel colour-lab">
+        <div class="colour-preview" id="colourPreview" aria-label="Colour preview">
+            <strong id="previewHex">#FF0000</strong>
+            <span>Your colour preview</span>
+        </div>
+
+        <div>
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="redSlider">🔴 Red</label>
+                    <output id="redValue" for="redSlider">255</output>
+                </div>
+                <input type="range" id="redSlider" min="0" max="255" value="255">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="greenSlider">🟢 Green</label>
+                    <output id="greenValue" for="greenSlider">0</output>
+                </div>
+                <input type="range" id="greenSlider" min="0" max="255" value="0">
+            </div>
+
+            <div class="slider-row">
+                <div class="slider-label">
+                    <label for="blueSlider">🔵 Blue</label>
+                    <output id="blueValue" for="blueSlider">0</output>
+                </div>
+                <input type="range" id="blueSlider" min="0" max="255" value="0">
+            </div>
+
+            <div class="colour-code" id="colourCode">#FF0000</div>
+            <button class="btn btn-dark" type="button" id="copyColourBtn">
+                Copy Colour Code
+            </button>
+
+            <p id="colourMessage" style="margin-top:10px;font-size:13px;color:var(--muted)" aria-live="polite">
+                Each pair of hexadecimal digits represents one colour component.
+            </p>
+
+            <p style="margin-top:17px;font-weight:bold">Try a preset colour:</p>
+            <div class="colour-swatches">
+                <button class="swatch" style="background:#FF0000" data-colour="#FF0000" aria-label="Red"></button>
+                <button class="swatch" style="background:#00AA55" data-colour="#00AA55" aria-label="Green"></button>
+                <button class="swatch" style="background:#0055FF" data-colour="#0055FF" aria-label="Blue"></button>
+                <button class="swatch" style="background:#F2C14E" data-colour="#F2C14E" aria-label="Gold"></button>
+                <button class="swatch" style="background:#8F1515" data-colour="#8F1515" aria-label="Maroon"></button>
+                <button class="swatch" style="background:#FFFFFF" data-colour="#FFFFFF" aria-label="White"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section" id="comparison">
+    <div class="panel">
+        <div class="section-heading">
+            <p class="eyebrow">Quick Reference</p>
+            <h2>Compare the Number Systems</h2>
+            <p>Remember that different representations can express the same value.</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Number System</th>
+                        <th>Base</th>
+                        <th>Symbols Used</th>
+                        <th>Decimal 25 in This System</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Decimal</td><td>10</td><td>0–9</td><td>25</td></tr>
+                    <tr><td>Binary</td><td>2</td><td>0, 1</td><td>11001</td></tr>
+                    <tr><td>Octal</td><td>8</td><td>0–7</td><td>31</td></tr>
+                    <tr><td>Hexadecimal</td><td>16</td><td>0–9, A–F</td><td>19</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- DID YOU KNOW -->
+<section class="section">
+    <div class="fact-banner">
+        <div class="fact-icon" aria-hidden="true">💡</div>
+        <div>
+            <h2>Did You Know?</h2>
+            <p>
+                One hexadecimal digit represents exactly four binary bits.
+                For example, hexadecimal A is binary 1010 and decimal 10.
+            </p>
+            <p style="margin-top:9px">
+                This makes hexadecimal useful for writing long binary
+                values more compactly. Try entering A in the converter
+                with hexadecimal selected!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CHALLENGE -->
+<section class="section" id="challenge">
+    <div class="challenge">
+        <p class="eyebrow">Quick Challenge</p>
+        <h2>🧠 Can You Solve It?</h2>
+        <p>Choose an answer. You will get instant feedback.</p>
+
+        <div class="challenge-question">
+            <p><strong id="challengeQuestion">Question 1:</strong></p>
+            <p id="challengeText" style="margin-top:7px">What is decimal 15 in binary?</p>
+            <div class="challenge-options" id="challengeOptions">
+                <button class="btn btn-outline" data-answer="a">1010</button>
+                <button class="btn btn-outline" data-answer="b">1111</button>
+                <button class="btn btn-outline" data-answer="c">1101</button>
+            </div>
+            <p class="challenge-feedback" id="challengeFeedback" aria-live="polite"></p>
+        </div>
+
+        <button type="button" class="btn btn-dark" id="nextChallenge" disabled>
+            Next Challenge →
+        </button>
+        <span id="challengeCounter" style="margin-left:10px;font-size:13px;color:var(--muted)">
+            Challenge 1 of 4
+        </span>
+    </div>
+</section>
+
+<!-- INTERACTIVE QUIZ -->
+<section class="section" id="quiz">
+    <div class="panel quiz-panel">
+        <p class="eyebrow">Check Your Learning</p>
+        <h2>🎯 Test Your Understanding</h2>
+        <p>Answer all four questions and submit to see your score and explanations.</p>
+
+        <div class="quiz-progress">
+            <div class="quiz-progress-bar" id="quizProgressBar"></div>
+        </div>
+        <p class="quiz-progress-label" id="quizProgressLabel">0 of 4 questions answered</p>
+
+        <form id="realLifeQuiz">
+            <fieldset class="quiz-question">
+                <legend>1. Which number system is fundamental to digital computer data?</legend>
+                <label><input type="radio" name="q1" value="a"> Decimal</label>
+                <label><input type="radio" name="q1" value="b"> Binary</label>
+                <label><input type="radio" name="q1" value="c"> Octal</label>
+            </fieldset>
+
+            <fieldset class="quiz-question">
+                <legend>2. Which number system is used in colour codes such as #FF0000?</legend>
+                <label><input type="radio" name="q2" value="a"> Binary</label>
+                <label><input type="radio" name="q2" value="b"> Decimal</label>
+                <label><input type="radio" name="q2" value="c"> Hexadecimal</label>
+            </fieldset>
+
+            <fieldset class="quiz-question">
+                <legend>3. What is the base of the octal number system?</legend>
+                <label><input type="radio" name="q3" value="a"> 2</label>
+                <label><input type="radio" name="q3" value="b"> 8</label>
+                <label><input type="radio" name="q3" value="c"> 16</label>
+            </fieldset>
+
+            <fieldset class="quiz-question">
+                <legend>4. Which binary number represents decimal 10?</legend>
+                <label><input type="radio" name="q4" value="a"> 1010</label>
+                <label><input type="radio" name="q4" value="b"> 1001</label>
+                <label><input type="radio" name="q4" value="c"> 1110</label>
+            </fieldset>
+
+            <div class="quiz-buttons">
+                <button type="submit" class="btn btn-gold">Submit Answers ✓</button>
+                <button type="reset" class="btn btn-dark">Try Again ↻</button>
+            </div>
+
+            <div id="quizResult" class="quiz-feedback" aria-live="polite" role="status"></div>
+        </form>
+    </div>
+</section>
+
+<!-- KEY TAKEAWAYS -->
+<section class="section" id="takeaways">
+    <div class="section-heading">
+        <p class="eyebrow">Before You Leave</p>
+        <h2>Key Takeaways</h2>
+        <p>Here are the main ideas to remember from this page.</p>
+    </div>
+
+    <div class="takeaway-grid">
+        <div class="takeaway"><span>✓</span><p>Binary uses 0 and 1 and is fundamental to digital computers.</p></div>
+        <div class="takeaway"><span>✓</span><p>Decimal uses ten symbols, from 0 to 9.</p></div>
+        <div class="takeaway"><span>✓</span><p>Octal uses digits 0–7, while hexadecimal uses 0–9 and A–F.</p></div>
+        <div class="takeaway"><span>✓</span><p>Hexadecimal colour codes can represent RGB colour components.</p></div>
+        <div class="takeaway"><span>✓</span><p>Octal and hexadecimal can represent binary values more compactly.</p></div>
+        <div class="takeaway"><span>✓</span><p>Number systems are used in computing, programming and digital media.</p></div>
+    </div>
+</section>
+
+<!-- LINKS -->
+<div class="resource-links">
+    <a href="index.html" class="btn btn-dark">← Back to Home</a>
+    <a href="practice.html" class="btn btn-gold">Explore Practice Questions →</a>
+</div>
+
+</div>
+</main>
+
+<footer>
+    <strong>DTI Learning Hub</strong>
+    <p>Class IX Digital Technology and Innovation | Digital Number Systems</p>
+    <p>Learn step by step. Experiment freely. Practise with confidence.</p>
+</footer>
+
+<script>
+// Expand and collapse the real-life example cards.
+document.querySelectorAll(".learn-more").forEach(button => {
+    button.addEventListener("click", () => {
+        const info = button.nextElementSibling;
+        const isOpen = info.classList.toggle("open");
+
+        button.setAttribute("aria-expanded", String(isOpen));
+        button.textContent = isOpen
+            ? "− Show less"
+            : "＋ Discover how it works";
+    });
+});
+
+// Number system converter.
+const numberInput = document.getElementById("numberInput");
+const numberBase = document.getElementById("numberBase");
+const conversionMessage = document.getElementById("conversionMessage");
+
+function convertNumber() {
+    const raw = numberInput.value.trim();
+    const base = Number(numberBase.value);
+
+    if (!raw) {
+        conversionMessage.textContent = "Please enter a number first.";
+        conversionMessage.style.color = "#ffe6a0";
+        numberInput.focus();
+        return;
+    }
+
+    // Allow digits 0-9 and letters A-F; reject other characters.
+    if (!/^[0-9a-fA-F]+$/.test(raw)) {
+        conversionMessage.textContent =
+            "Invalid input. Use digits 0–9 and, for hexadecimal, letters A–F.";
+        conversionMessage.style.color = "#ffb5a9";
+        return;
+    }
+
+    const value = parseInt(raw, base);
+
+    // Check that every digit is valid for the selected base.
+    if (!Number.isFinite(value) || value < 0 ||
+        !Number.isSafeInteger(value) || value.toString(base) !== raw.toLowerCase().replace(/^0+(?=.)/, "")) {
+        conversionMessage.textContent =
+            "That number is not valid for the selected base, or it is too large. Please check your input.";
+        conversionMessage.style.color = "#ffb5a9";
+        return;
+    }
+
+    document.getElementById("decimalResult").textContent = value.toString(10);
+    document.getElementById("binaryResult").textContent = value.toString(2);
+    document.getElementById("octalResult").textContent = value.toString(8);
+    document.getElementById("hexResult").textContent = value.toString(16).toUpperCase();
+
+    conversionMessage.textContent =
+        "Success! All four representations show the same numerical value.";
+    conversionMessage.style.color = "#ffe6a0";
+}
+
+document.getElementById("convertBtn").addEventListener("click", convertNumber);
+
+numberInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        convertNumber();
+    }
+});
+
+numberBase.addEventListener("change", () => {
+    conversionMessage.textContent =
+        "Enter a number that is valid in the selected number system, then click Convert Number.";
+    conversionMessage.style.color = "#e7ded3";
+});
+
+// Hexadecimal colour lab.
+const sliders = {
+    r: document.getElementById("redSlider"),
+    g: document.getElementById("greenSlider"),
+    b: document.getElementById("blueSlider")
+};
+
+function updateColour() {
+    const r = Number(sliders.r.value);
+    const g = Number(sliders.g.value);
+    const b = Number(sliders.b.value);
+
+    const hex = "#" + [r, g, b]
+        .map(value => value.toString(16).padStart(2, "0").toUpperCase())
+        .join("");
+
+    document.getElementById("redValue").textContent = r;
+    document.getElementById("greenValue").textContent = g;
+    document.getElementById("blueValue").textContent = b;
+    document.getElementById("colourCode").textContent = hex;
+    document.getElementById("previewHex").textContent = hex;
+    document.getElementById("colourPreview").style.background = hex;
+
+    // Use contrasting text for light and dark previews.
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    document.getElementById("colourPreview").style.color =
+        brightness > 150 ? "#171515" : "#ffffff";
+
+    document.getElementById("colourMessage").textContent =
+        hex + " represents red " + r + ", green " + g + ", and blue " + b + ".";
+}
+
+Object.values(sliders).forEach(slider => {
+    slider.addEventListener("input", updateColour);
+});
+
+document.querySelectorAll(".swatch").forEach(button => {
+    button.addEventListener("click", () => {
+        const hex = button.dataset.colour;
+        const value = hex.slice(1);
+
+        sliders.r.value = parseInt(value.slice(0, 2), 16);
+        sliders.g.value = parseInt(value.slice(2, 4), 16);
+        sliders.b.value = parseInt(value.slice(4, 6), 16);
+
+        updateColour();
+    });
+});
+
+document.getElementById("copyColourBtn").addEventListener("click", async () => {
+    const hex = document.getElementById("colourCode").textContent;
+    const message = document.getElementById("colourMessage");
+
+    try {
+        await navigator.clipboard.writeText(hex);
+        message.textContent = "Copied " + hex + " to your clipboard!";
+    } catch (error) {
+        message.textContent = "Your colour code is " + hex +
+            ". Select and copy it from the box above.";
+    }
+});
+
+// Quick challenge with four questions.
+const challenges = [
+    {
+        question: "What is decimal 15 in binary?",
+        options: ["1010", "1111", "1101"],
+        answer: 1,
+        explanation: "1111₂ = 8 + 4 + 2 + 1 = 15."
+    },
+    {
+        question: "What is the decimal value of octal 17?",
+        options: ["17", "12", "15"],
+        answer: 2,
+        explanation: "17₈ = 1 × 8 + 7 = 15."
+    },
+    {
+        question: "What is hexadecimal A in decimal?",
+        options: ["10", "12", "16"],
+        answer: 0,
+        explanation: "In hexadecimal, A represents decimal 10."
+    },
+    {
+        question: "Which binary group corresponds to hexadecimal F?",
+        options: ["1010", "1111", "1001"],
+        answer: 1,
+        explanation: "F represents decimal 15, which is binary 1111."
+    }
+];
+
+let challengeIndex = 0;
+let challengeCompleted = false;
+
+function showChallenge() {
+    const item = challenges[challengeIndex];
+    challengeCompleted = false;
+
+    document.getElementById("challengeQuestion").textContent =
+        "Question " + (challengeIndex + 1) + ":";
+    document.getElementById("challengeText").textContent = item.question;
+    document.getElementById("challengeFeedback").textContent = "";
+    document.getElementById("nextChallenge").disabled = true;
+    document.getElementById("challengeCounter").textContent =
+        "Challenge " + (challengeIndex + 1) + " of " + challenges.length;
+
+    const options = document.getElementById("challengeOptions");
+    options.innerHTML = "";
+
+    item.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "btn btn-outline";
+        button.textContent = option;
+
+        button.addEventListener("click", () => {
+            if (challengeCompleted) return;
+
+            challengeCompleted = true;
+            const feedback = document.getElementById("challengeFeedback");
+
+            if (index === item.answer) {
+                feedback.textContent = "✓ Correct! " + item.explanation;
+                feedback.style.color = "#205d31";
+            } else {
+                feedback.textContent = "Not quite. " + item.explanation;
+                feedback.style.color = "#8f1515";
+            }
+
+            options.querySelectorAll("button").forEach(btn => {
+                btn.disabled = true;
+            });
+
+            const next = document.getElementById("nextChallenge");
+            next.disabled = false;
+            next.textContent = challengeIndex === challenges.length - 1
+                ? "Play Again ↻"
+                : "Next Challenge →";
+        });
+
+        options.appendChild(button);
+    });
+}
+
+document.getElementById("nextChallenge").addEventListener("click", () => {
+    challengeIndex = (challengeIndex + 1) % challenges.length;
+    showChallenge();
+});
+
+showChallenge();
+
+// Quiz progress.
+const quiz = document.getElementById("realLifeQuiz");
+const quizResult = document.getElementById("quizResult");
+
+function updateQuizProgress() {
+    const answered = ["q1", "q2", "q3", "q4"].filter(name =>
+        quiz.querySelector('input[name="' + name + '"]:checked')
+    ).length;
+
+    document.getElementById("quizProgressBar").style.width =
+        (answered / 4 * 100) + "%";
+
+    document.getElementById("quizProgressLabel").textContent =
+        answered + " of 4 questions answered";
+}
+
+quiz.addEventListener("change", updateQuizProgress);
+
+quiz.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const answers = { q1: "b", q2: "c", q3: "b", q4: "a" };
+
+    const explanations = {
+        q1: "Binary uses 0 and 1 and is fundamental to digital computer data.",
+        q2: "Hexadecimal uses 0–9 and A–F, and is commonly used in web colour codes.",
+        q3: "Octal has base 8 and uses digits 0 through 7.",
+        q4: "1010₂ = 8 + 2 = 10 in decimal."
+    };
+
+    let score = 0;
+    let unanswered = 0;
+    const feedback = [];
+
+    for (const question in answers) {
+        const selected = quiz.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+
+        if (!selected) {
+            unanswered++;
+        } else if (selected.value === answers[question]) {
+            score++;
+            feedback.push("✓ Question " + question.slice(1) + ": Correct.");
+        } else {
+            feedback.push("✗ Question " + question.slice(1) + ": " +
+                explanations[question]);
+        }
+    }
+
+    quizResult.className = "quiz-feedback show";
+
+    if (unanswered > 0) {
+        quizResult.classList.add("try-again");
+        quizResult.innerHTML =
+            "<h3>Almost there!</h3><p>Please answer all four questions. " +
+            unanswered + " question(s) remain unanswered.</p>";
+        return;
+    }
+
+    quizResult.classList.add(score === 4 ? "success" : "try-again");
+
+    const heading = score === 4 ? "Excellent work! 🎉" :
+        score >= 2 ? "Good effort! Keep practising." : "Keep learning!";
+
+    quizResult.replaceChildren();
+
+    const title = document.createElement("h3");
+    title.textContent = heading + " Score: " + score + " / 4";
+    quizResult.appendChild(title);
+
+    const list = document.createElement("ul");
+    list.style.margin = "10px 0 0 20px";
+
+    feedback.forEach(line => {
+        const li = document.createElement("li");
+        li.textContent = line;
+        list.appendChild(li);
+    });
+
+    quizResult.appendChild(list);
+});
+
+quiz.addEventListener("reset", () => {
+    quizResult.className = "quiz-feedback";
+    quizResult.replaceChildren();
+    updateQuizProgress();
+});
+
+// Initial visual setup.
+updateColour();
+updateQuizProgress();
+</script>
+</body>
+</html>

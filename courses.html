@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore five step-by-step Class IX Digital Technology and Innovation lessons on Digital Number Systems.">
+  <title>Course Lessons | DTI Learning Hub</title>
+
+  <style>
+    /* =====================================
+       DTI LEARNING HUB
+       BLACK, GOLD, MAROON AND CREAM THEME
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #171515;
+      --black-soft: #282222;
+      --black-light: #3a3030;
+      --gold: #f2c14e;
+      --gold-light: #ffe6a0;
+      --gold-pale: #fff4d6;
+      --maroon: #8f1515;
+      --maroon-light: #c62828;
+      --cream: #fffaf0;
+      --white: #ffffff;
+      --text: #302727;
+      --muted: #685c54;
+      --border: #ead9ad;
+      --shadow: 0 8px 25px rgba(23, 21, 21, 0.08);
+      --shadow-hover: 0 15px 32px rgba(23, 21, 21, 0.14);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(242, 193, 78, 0.10),
+          transparent 32%
+        ),
+        linear-gradient(180deg, var(--cream), #fffdf8);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* =====================================
+       HERO SECTION
+    ===================================== */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(242, 193, 78, 0.12),
+          transparent 30%
+        ),
+        linear-gradient(
+          125deg,
+          var(--black),
+          var(--black-soft) 55%,
+          #421b22
+        );
+      color: var(--white);
+      padding: 75px 8%;
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: 25%;
+      border: 1px solid rgba(242, 193, 78, 0.25);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      bottom: -130px;
+      left: 10%;
+      border: 2px solid rgba(242, 193, 78, 0.18);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1250px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 55px;
+    }
+
+    .hero-inner > div:first-child {
+      flex: 1;
+      max-width: 680px;
+    }
+
+    .eyebrow,
+    .kicker {
+      display: inline-block;
+      color: var(--maroon);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero .eyebrow {
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .hero h1::after {
+      content: "";
+      display: block;
+      width: 90px;
+      height: 5px;
+      margin-top: 20px;
+      background: var(--gold);
+      border-radius: 5px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #f4eee5;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    /* =====================================
+       BUTTONS
+    ===================================== */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-gold:hover {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--maroon);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-light {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--gold);
+    }
+
+    .btn-light:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+
+    /* =====================================
+       HERO ILLUSTRATION
+    ===================================== */
+
+    .hero-art {
+      width: 310px;
+      min-width: 250px;
+      padding: 22px;
+      background: var(--gold);
+      border-radius: 48% 48% 18px 18px;
+      box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-art img {
+      width: 100%;
+      border-radius: 12px;
+      background: var(--cream);
+    }
+
+    /* =====================================
+       MAIN CONTENT
+    ===================================== */
+
+    .wrap {
+      width: min(1200px, 88%);
+      margin: 0 auto;
+    }
+
+    #lessons {
+      padding: 70px 0 45px;
+      scroll-margin-top: 25px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-head .kicker {
+      color: var(--maroon);
+    }
+
+    .section-head h2,
+    .visual-row h2 {
+      color: var(--black-soft);
+      font-size: clamp(29px, 4vw, 38px);
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* GOLDEN DIVIDER */
+
+    .section-head h2::after {
+      content: "";
+      display: block;
+      width: 65px;
+      height: 4px;
+      margin: 15px auto 0;
+      border-radius: 4px;
+      background: var(--gold);
+    }
+
+    /* =====================================
+       LESSON CARDS
+    ===================================== */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 5px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-top-color: var(--gold);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .lesson-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-bottom: 25px;
+    }
+
+    .lesson-card > img {
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      padding: 20px;
+      background: linear-gradient(
+        135deg,
+        var(--gold-pale),
+        #f5e8d7
+      );
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .lesson-num {
+      display: inline-block;
+      margin: 23px 24px 8px;
+      padding: 5px 12px;
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
+
+    .lesson-card h3 {
+      color: var(--maroon);
+      font-size: 21px;
+      line-height: 1.4;
+      margin: 5px 24px 12px;
+    }
+
+    .lesson-card p {
+      margin: 0 24px 13px;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .lesson-card p b {
+      color: var(--black-soft);
+    }
+
+    .lesson-card .btn {
+      margin: auto 24px 0;
+    }
+
+    /* =====================================
+       LEARNING IN CONTEXT
+    ===================================== */
+
+    .visual-row {
+      display: flex;
+      align-items: center;
+      gap: 45px;
+      padding: 35px;
+      margin: 35px 0 75px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--gold);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .visual-row > img {
+      width: 40%;
+      max-height: 280px;
+      object-fit: contain;
+      padding: 15px;
+      background: var(--gold-pale);
+      border-radius: 12px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .visual-row > div {
+      flex: 1;
+    }
+
+    .visual-row .kicker {
+      color: var(--maroon);
+    }
+
+    .visual-row p {
+      margin-bottom: 23px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    /* =====================================
+       FOOTER
+    ===================================== */
+
+    footer {
+      background: linear-gradient(
+        125deg,
+        var(--black),
+        var(--black-soft),
+        #421b22
+      );
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 5px solid var(--gold);
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer p:first-child {
+      font-size: 17px;
+    }
+
+    footer b,
+    footer a {
+      color: var(--gold);
+    }
+
+    footer a {
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    /* =====================================
+       ACCESSIBILITY
+    ===================================== */
+
+    a:focus-visible {
+      outline: 3px solid var(--maroon-light);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* =====================================
+       TABLET RESPONSIVENESS
+    ===================================== */
+
+    @media (max-width: 1000px) {
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .hero-inner {
+        gap: 35px;
+      }
+
+      .hero-art {
+        width: 270px;
+        min-width: 220px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* =====================================
+       MOBILE RESPONSIVENESS
+    ===================================== */
+
+    @media (max-width: 650px) {
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero h1::after {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-art {
+        width: min(280px, 85%);
+        min-width: 0;
+        margin: 10px auto 5px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .wrap {
+        width: 90%;
+      }
+
+      #lessons {
+        padding-top: 50px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .lesson-card > img {
+        height: 210px;
+      }
+
+      .visual-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 25px;
+        padding: 22px;
+        margin-bottom: 50px;
+      }
+
+      .visual-row > img {
+        width: 100%;
+        max-height: 220px;
+      }
+
+      .visual-row h2 {
+        font-size: 28px;
+      }
+
+      .section-head h2 {
+        font-size: 30px;
+      }
+
+      .btn {
+        padding: 11px 16px;
+      }
+    }
+
+    /* REDUCE ANIMATIONS WHEN REQUESTED */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div>
+        <span class="eyebrow">Class IX · Chapter 1</span>
+
+        <h1>Digital Number System</h1>
+
+        <p>
+          Explore five step-by-step lessons about number systems.
+          Learn the concepts, study worked examples, and practise
+          each conversion method at your own pace.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#lessons">
+            Explore the 5 Lessons ↓
+          </a>
+
+          <a class="btn btn-light" href="lesson1.html">
+            Start Lesson 1 →
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img
+          src="images/bhutan-dzong.svg"
+          alt="Bhutan-inspired dzong and mountains"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LESSON COLLECTION -->
+
+  <main class="wrap">
+
+    <section id="lessons">
+
+      <div class="section-head">
+        <span class="kicker">Your Learning Path</span>
+
+        <h2>Choose a Lesson</h2>
+
+        <p class="lead">
+          Each lesson includes explanations, worked examples,
+          and practice questions to help you understand the
+          digital number system step by step.
+        </p>
+      </div>
+
+      <div class="grid">
+
+        <!-- LESSON 1 -->
+
+        <article class="card lesson-card">
+
+          <img
+            src="images/bhutan-classroom.svg"
+            alt="Bhutan-inspired classroom illustration"
+            loading="lazy"
+          >
+
+          <span class="lesson-num">LESSON 1</span>
+
+          <h3>Data Representation and Number Systems</h3>
+
+          <p>
+            Understand how computers represent information and
+            learn about the four common number systems.
+          </p>
+
+          <p>
+            <b>Topics:</b> Bits, bytes, decimal, binary,
+            octal and hexadecimal basics.
+          </p>
+
+          <a class="btn btn-gold" href="lesson1.html">
+            Open Lesson 1 →
+          </a>
+
+        </article>
+
+        <!-- LESSON 2 -->
+
+        <article class="card lesson-card">
+
+          <img
+            src="images/bhutan-mountains.svg"
+            alt="Bhutan mountains illustration"
+            loading="lazy"
+          >
+
+          <span class="lesson-num">LESSON 2</span>
+
+          <h3>Binary and Octal Number Systems</h3>
+
+          <p>
+            Learn binary and octal place values and convert
+            numbers between the two systems.
+          </p>
+
+          <p>
+            <b>Topics:</b> Place values and conversion using
+            groups of three binary digits.
+          </p>
+
+          <a class="btn btn-gold" href="lesson2.html">
+            Open Lesson 2 →
+          </a>
+
+        </article>
+
+        <!-- LESSON 3 -->
+
+        <article class="card lesson-card">
+
+          <img
+            src="images/bhutan-dzong.svg"
+            alt="Bhutanese dzong illustration"
+            loading="lazy"
+          >
+
+          <span class="lesson-num">LESSON 3</span>
+
+          <h3>Hexadecimal and Binary Conversion</h3>
+
+          <p>
+            Understand base 16 and use four-bit groups to
+            convert hexadecimal and binary numbers.
+          </p>
+
+          <p>
+            <b>Topics:</b> Hexadecimal digits 0–9 and A–F,
+            and binary conversion.
+          </p>
+
+          <a class="btn btn-gold" href="lesson3.html">
+            Open Lesson 3 →
+          </a>
+
+        </article>
+
+        <!-- LESSON 4 -->
+
+        <article class="card lesson-card">
+
+          <img
+            src="images/bhutan-classroom.svg"
+            alt="Classroom illustration"
+            loading="lazy"
+          >
+
+          <span class="lesson-num">LESSON 4</span>
+
+          <h3>Decimal to Binary, Octal and Hexadecimal</h3>
+
+          <p>
+            Use the division-and-remainder method to convert
+            decimal numbers into other number systems.
+          </p>
+
+          <p>
+            <b>Topics:</b> Repeated division and reading
+            remainders from bottom to top.
+          </p>
+
+          <a class="btn btn-gold" href="lesson4.html">
+            Open Lesson 4 →
+          </a>
+
+        </article>
+
+        <!-- LESSON 5 -->
+
+        <article class="card lesson-card">
+
+          <img
+            src="images/bhutan-mountains.svg"
+            alt="Bhutan mountains illustration"
+            loading="lazy"
+          >
+
+          <span class="lesson-num">LESSON 5</span>
+
+          <h3>Converting Binary, Octal and Hexadecimal to Decimal</h3>
+
+          <p>
+            Use positional powers to convert numbers into
+            decimal and revise what you have learned.
+          </p>
+
+          <p>
+            <b>Topics:</b> Positional notation and conversion
+            to decimal.
+          </p>
+
+          <a class="btn btn-gold" href="lesson5.html">
+            Open Lesson 5 →
+          </a>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- LEARNING IN CONTEXT -->
+
+    <section class="visual-row">
+
+      <img
+        src="images/bhutan-classroom.svg"
+        alt="Illustration of a classroom"
+        loading="lazy"
+      >
+
+      <div>
+        <span class="kicker">Learn in Context</span>
+
+        <h2>Digital Skills, Rooted in Bhutan</h2>
+
+        <p>
+          Connect number systems to computer labs, digital
+          learning and the technology we use in everyday life.
+          Build your understanding through examples and practice.
+        </p>
+
+        <a class="btn btn-gold" href="lesson1.html">
+          Begin Learning →
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>
+      <b>DTI Learning Hub</b> · Class IX Digital Technology and Innovation
+    </p>
+
+    <p>Learn step by step. Practise with confidence.</p>
+
+    <p>
+      <a href="courses.html">All Lessons</a>
+      &nbsp;·&nbsp;
+      <a href="index.html">Home</a>
+    </p>
+  </footer>
+
+</body>
+</html>
