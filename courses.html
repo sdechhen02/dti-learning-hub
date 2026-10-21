@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses | DTI Learning Hub</title>
+
+  <style>
+    :root {
+      --maroon: #800020;
+      --deep-maroon: #4A0012;
+      --black: #171316;
+      --gold: #FFD34E;
+      --light-gold: #FFE8A3;
+      --cream: #FFF8E8;
+      --white: #FFFFFF;
+      --text: #30242A;
+      --muted: #6E6267;
+      --border: #E8D8DC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(1150px, 92%);
+      margin: 0 auto;
+      padding: 36px 0 60px;
+    }
+
+    .page-heading {
+      text-align: center;
+      padding: 36px 20px;
+      margin-bottom: 36px;
+      border-radius: 22px;
+      color: var(--white);
+      background: linear-gradient(
+        135deg,
+        var(--deep-maroon),
+        var(--maroon),
+        #A52A45
+      );
+      border-bottom: 7px solid var(--gold);
+    }
+
+    .page-heading .kicker {
+      color: var(--gold);
+    }
+
+    .kicker {
+      display: inline-block;
+      color: var(--maroon);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 8px 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2;
+    }
+
+    .page-heading p {
+      max-width: 680px;
+      margin: 14px auto 0;
+      color: #FFF1F3;
+    }
+
+    .section-heading {
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      margin: 6px 0;
+      color: var(--deep-maroon);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .lesson-card {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 7px 22px rgba(74, 0, 18, 0.09);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 13px 28px rgba(74, 0, 18, 0.16);
+    }
+
+    .lesson-card img {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      background: var(--light-gold);
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .lesson-content {
+      padding: 23px;
+    }
+
+    .lesson-number {
+      display: inline-block;
+      padding: 5px 11px;
+      margin-bottom: 8px;
+      color: var(--deep-maroon);
+      background: var(--light-gold);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .lesson-card h3 {
+      margin: 4px 0 12px;
+      color: var(--maroon);
+      font-size: 1.35rem;
+      line-height: 1.35;
+    }
+
+    .lesson-card p {
+      margin: 10px 0;
+    }
+
+    .lesson-card p b {
+      color: var(--deep-maroon);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 11px 18px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-gold {
+      color: var(--black);
+      background: var(--gold);
+      border: 2px solid var(--gold);
+    }
+
+    .btn-gold:hover {
+      background: #FFE27A;
+      border-color: #FFE27A;
+    }
+
+    .visual-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 34px;
+      margin-top: 58px;
+      padding: 30px;
+      background: var(--deep-maroon);
+      border: 3px solid var(--gold);
+      border-radius: 22px;
+      color: var(--white);
+    }
+
+    .visual-row img {
+      display: block;
+      width: 100%;
+      min-height: 250px;
+      max-height: 350px;
+      object-fit: cover;
+      background: var(--light-gold);
+      border-radius: 14px;
+      border: 3px solid var(--gold);
+    }
+
+    .visual-row .kicker {
+      color: var(--gold);
+    }
+
+    .visual-row h2 {
+      margin: 8px 0 12px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.25;
+    }
+
+    .visual-row p {
+      color: #FFF0F2;
+    }
+
+    footer {
+      padding: 28px 5%;
+      text-align: center;
+      color: var(--white);
+      background: var(--black);
+      border-top: 5px solid var(--gold);
+    }
+
+    footer p {
+      margin: 7px 0;
+    }
+
+    footer b {
+      color: var(--gold);
+    }
+
+    footer a {
+      color: var(--light-gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: 92%;
+        padding-top: 20px;
+      }
+
+      .lesson-grid,
+      .visual-row {
+        grid-template-columns: 1fr;
+      }
+
+      .page-heading {
+        padding: 28px 17px;
+      }
+
+      .lesson-card img {
+        height: auto;
+        min-height: 180px;
+        max-height: 280px;
+        object-fit: contain;
+      }
+
+      .visual-row {
+        padding: 20px;
+        gap: 22px;
+      }
+
+      .visual-row img {
+        min-height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <!-- PAGE INTRODUCTION -->
+
+    <section class="page-heading">
+      <span class="kicker">Class IX · Digital Technology and Innovation</span>
+      <h1>Explore Your Lessons</h1>
+      <p>
+        Learn digital number systems step by step through visual
+        explanations, examples and practice activities.
+      </p>
+    </section>
+
+    <!-- ALL FIVE LESSONS -->
+
+    <section>
+      <div class="section-heading">
+        <span class="kicker">Your Learning Path</span>
+        <h2>Digital Number System</h2>
+        <p>Explore each lesson in sequence and strengthen your understanding.</p>
+      </div>
+
+      <div class="lesson-grid">
+
+        <!-- LESSON 1 -->
+
+        <article class="lesson-card">
+          <img
+            src="https://drive.google.com/thumbnail?id=1dI-mT6WkT74w-929nsPv6EJOmlpDW-Qm&sz=w1200"
+            alt="Lesson 1: Data Representation and Number Systems"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
+
+          <div class="lesson-content">
+            <span class="lesson-number">LESSON 1</span>
+            <h3>Data Representation and Number Systems</h3>
+
+            <p>
+              Learn how computers represent data and explore the
+              binary, octal, decimal and hexadecimal number systems.
+            </p>
+
+            <p>
+              <b>Topics:</b> Data representation and different number systems.
+            </p>
+
+            <a class="btn btn-gold" href="lesson1.html">
+              Open Lesson 1 →
+            </a>
+          </div>
+        </article>
+
+        <!-- LESSON 2 -->
+
+        <article class="lesson-card">
+          <img
+            src="https://drive.google.com/thumbnail?id=1T21bRDYz2J1sfK_E9YWzFIJ0UZlF-KWq&sz=w1200"
+            alt="Lesson 2: Binary to Octal Number System"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
+
+          <div class="lesson-content">
+            <span class="lesson-number">LESSON 2</span>
+            <h3>Binary to Other Number Systems</h3>
+
+            <p>
+              Learn how to convert binary numbers into other number
+              systems by following clear steps and examples.
+            </p>
+
+            <p>
+              <b>Topics:</b> Binary number conversion.
+            </p>
+
+            <a class="btn btn-gold" href="lesson2.html">
+              Open Lesson 2 →
+            </a>
+          </div>
+        </article>
+
+        <!-- LESSON 3 -->
+
+        <article class="lesson-card">
+          <img
+            src="https://drive.google.com/thumbnail?id=1XZISeepqI7vedFsjcP9WFOhkDrgm6AvC&sz=w1200"
+            alt="Lesson 3: Hexadecimal and Binary Conversion"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
+
+          <div class="lesson-content">
+            <span class="lesson-number">LESSON 3</span>
+            <h3>Octal Number System to Other Number Systems</h3>
+
+            <p>
+              Explore how octal numbers can be converted into other
+              number systems using simple conversion methods.
+            </p>
+
+            <p>
+              <b>Topics:</b> Octal number conversion.
+            </p>
+
+            <a class="btn btn-gold" href="lesson3.html">
+              Open Lesson 3 →
+            </a>
+          </div>
+        </article>
+
+        <!-- LESSON 4 -->
+
+        <article class="lesson-card">
+          <img
+            src="https://drive.google.com/thumbnail?id=1vnx7ky2_odJh7jRmgaW9Iox36A0SMEyO&sz=w1200"
+            alt="Lesson 4: Decimal to Binary, Octal and Hexadecimal"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
+
+          <div class="lesson-content">
+            <span class="lesson-number">LESSON 4</span>
+            <h3>Decimal to Other Number Systems</h3>
+
+            <p>
+              Practise converting decimal numbers into binary,
+              octal and hexadecimal using step-by-step methods.
+            </p>
+
+            <p>
+              <b>Topics:</b> Decimal-to-binary, octal and hexadecimal conversion.
+            </p>
+
+            <a class="btn btn-gold" href="lesson4.html">
+              Open Lesson 4 →
+            </a>
+          </div>
+        </article>
+
+        <!-- LESSON 5 -->
+
+        <article class="lesson-card">
+          <img
+            src="https://drive.google.com/thumbnail?id=1gUvbMblmKJ8bWr0QQYONGAQnfzHfpfPA&sz=w1200"
+            alt="Lesson 5: Binary, Octal and Hexadecimal to Decimal"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
+
+          <div class="lesson-content">
+            <span class="lesson-number">LESSON 5</span>
+            <h3>Binary, Octal and Hexadecimal to Decimal</h3>
+
+            <p>
+              Use positional powers to convert numbers into
+              decimal and revise what you have learned.
+            </p>
+
+            <p>
+              <b>Topics:</b> Positional notation and conversion
+              to decimal.
+            </p>
+
+            <a class="btn btn-gold" href="lesson5.html">
+              Open Lesson 5 →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- LEARNING IN CONTEXT -->
+
+    <section class="visual-row">
+
+      <img
+        src="https://drive.google.com/thumbnail?id=1Zk3WaOOVtnQiXBL2RD51aJHwcCXsuNxv&sz=w1200"
+        alt="Digital learning in a Bhutanese classroom"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      >
+
+      <div>
+        <span class="kicker">Learn in Context</span>
+
+        <h2>Digital Skills, Rooted in Bhutan</h2>
+
+        <p>
+          Connect number systems to computer labs, digital
+          learning and the technology we use in everyday life.
+          Build your understanding through examples and practice.
+        </p>
+
+        <a class="btn btn-gold" href="lesson1.html">
+          Begin Learning →
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>
+      <b>DTI Learning Hub</b> · Class IX Digital Technology and Innovation
+    </p>
+
+    <p>Learn step by step. Practise with confidence.</p>
+
+    <p>
+      <a href="courses.html">All Lessons</a>
+      &nbsp;·&nbsp;
+      <a href="index.html">Home</a>
+    </p>
+  </footer>
+
+</body>
+</html>
